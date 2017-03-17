@@ -1,1 +1,1 @@
-murmur2_hash_functor
+An std::hash-like wrapper over Murmur Hash 2 function.
