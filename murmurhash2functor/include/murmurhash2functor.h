@@ -93,6 +93,11 @@ namespace mmh2 {
 				   detail::hash_impl()(&x, sizeof(long double), seed);
 		}
 	};
+
+	template <typename T>
+	size_t getMurmurHash2(const T& x, uint64_t seed = 0) {
+		return MurmurHash2<T>()(x, seed);
+	}
 }
 
 #endif //MMH2_MURMURHASH2FUNCTOR_H
