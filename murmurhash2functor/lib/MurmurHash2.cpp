@@ -33,6 +33,8 @@
 #endif // !defined(_MSC_VER)
 
 //-----------------------------------------------------------------------------
+namespace mmh2 {
+    namespace detail {
 
 uint32_t MurmurHash2 ( const void * key, int len, uint32_t seed )
 {
@@ -498,6 +500,8 @@ uint32_t MurmurHashAligned2 ( const void * key, int len, uint32_t seed )
 
       data += 4;
       len -= 4;
+          }
+        }
     }
 
     //----------
