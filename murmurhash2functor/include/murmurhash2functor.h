@@ -49,8 +49,8 @@ namespace mmh2 {
 	#define MMH2_INT_SPECIALIZATION(T) \
 	template<> \
 	struct MurmurHash2<T> { \
-		uint64_t operator()(T x) { \
-				return detail::hash_impl()(&x, sizeof(T), 0); \
+		uint64_t operator()(T x, uint64_t seed = 0) { \
+				return detail::hash_impl()(&x, sizeof(T), seed); \
 		} \
 	};
 
@@ -72,22 +72,25 @@ namespace mmh2 {
 
 	template <>
 	struct MurmurHash2<float> {
-		uint64_t operator ()(float x) {
-                return x == 0.0f ? 0 : detail::hash_impl()(&x, sizeof(float), 0);
+		uint64_t operator ()(float x, uint64_t seed = 0) {
+                return x == 0.0f ? 0 :
+					   detail::hash_impl()(&x, sizeof(float), seed);
 		}
 	};
 
 	template <>
 	struct MurmurHash2<double> {
-		uint64_t operator ()(double x) {
-			return x == 0.0 ? 0 : detail::hash_impl()(&x, sizeof(double), 0);
+		uint64_t operator ()(double x, uint64_t seed = 0) {
+			return x == 0.0 ? 0 :
+				   detail::hash_impl()(&x, sizeof(double), seed);
 		}
 	};
 
 	template <>
 	struct MurmurHash2<long double> {
-		uint64_t operator ()(long double x) {
-			return x == 0.0l ? 0 : detail::hash_impl()(&x, sizeof(long double), 0);
+		uint64_t operator ()(long double x, uint64_t seed = 0) {
+			return x == 0.0l ? 0 :
+				   detail::hash_impl()(&x, sizeof(long double), seed);
 		}
 	};
 }
