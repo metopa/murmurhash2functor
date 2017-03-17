@@ -3,10 +3,12 @@
  *
  *  @author Viacheslav Kroilov (metopa) <slavakroilov@gmail.com>
  */
- 
-#include "MurmurHash2.h"
+
+#include <iostream>
+#include "murmurhash2functor.h"
 
 int main() {
-	MurmurHash2(nullptr, 0, 0);
+	mmh2::MurmurHash2<int> h;
+	std::cout << h(700) << std::endl;
 	return 0;
 }
