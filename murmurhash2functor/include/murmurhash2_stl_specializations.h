@@ -51,6 +51,16 @@ namespace mmh2 {
 		}
 	};
 
+	template <>
+	struct MurmurHash2<std::string> {
+		uint64_t operator ()(const std::string& x, uint64_t seed = 0) {
+			uint64_t hash = seed;
+			for (auto c : x)
+				hash = getMurmurHash2(c, hash);
+			return hash;
+		}
+	};
+
 }
 
 #endif //MURMURHASH2FUNCTOR_MURMURHASH2_STL_SPECIALIZATIONS_H
