@@ -42,6 +42,15 @@ namespace mmh2 {
 		}
 	};
 
+	template <typename T1, typename T2>
+	struct MurmurHash2<std::pair<T1, T2>> {
+		uint64_t operator ()(const std::pair<T1, T2>& x, uint64_t seed = 0) {
+			uint64_t hash = getMurmurHash2(x.first, seed);
+			hash = getMurmurHash2(x.second, hash);
+			return hash;
+		}
+	};
+
 }
 
 #endif //MURMURHASH2FUNCTOR_MURMURHASH2_STL_SPECIALIZATIONS_H
