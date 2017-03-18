@@ -34,7 +34,8 @@ namespace mmh2 {
 
 	template <typename... TupleArgs>
 	struct MurmurHash2<std::tuple<TupleArgs...>> {
-		uint64_t operator ()(const std::tuple<TupleArgs...>& x, uint64_t seed = 0) {
+		uint64_t operator ()(const std::tuple<TupleArgs...>& x,
+							 uint64_t seed = 0) const {
 			uint64_t hash = seed;
 
 			detail::TupleHasher<sizeof...(TupleArgs)>::applyToTuple(x, hash);
@@ -44,7 +45,8 @@ namespace mmh2 {
 
 	template <typename T1, typename T2>
 	struct MurmurHash2<std::pair<T1, T2>> {
-		uint64_t operator ()(const std::pair<T1, T2>& x, uint64_t seed = 0) {
+		uint64_t operator ()(const std::pair<T1, T2>& x,
+							 uint64_t seed = 0) const {
 			uint64_t hash = getMurmurHash2(x.first, seed);
 			hash = getMurmurHash2(x.second, hash);
 			return hash;
@@ -53,14 +55,14 @@ namespace mmh2 {
 
 	template <>
 	struct MurmurHash2<std::string> {
-		uint64_t operator ()(const std::string& x, uint64_t seed = 0) {
+		uint64_t operator ()(const std::string& x,
+							 uint64_t seed = 0) const {
 			uint64_t hash = seed;
 			for (auto c : x)
 				hash = getMurmurHash2(c, hash);
 			return hash;
 		}
 	};
-
 }
 
 #endif //MURMURHASH2FUNCTOR_MURMURHASH2_STL_SPECIALIZATIONS_H
