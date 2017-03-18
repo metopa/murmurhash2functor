@@ -3,6 +3,6 @@ project(murmurhash2functor_lib)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_library(murmurhash2 lib/MurmurHash2.cpp)
-include_directories(include)
+add_library(murmurhash2 MurmurHash2.cpp)
+include_directories(../include)
 

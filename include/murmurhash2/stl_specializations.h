@@ -7,7 +7,7 @@
 #include <string>
 #include <tuple>
 
-#include "murmurhash2functor.h"
+#include "functor.h"
 
 #ifndef MURMURHASH2FUNCTOR_MURMURHASH2_STL_SPECIALIZATIONS_H
 #define MURMURHASH2FUNCTOR_MURMURHASH2_STL_SPECIALIZATIONS_H

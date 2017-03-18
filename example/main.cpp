@@ -5,8 +5,8 @@
  */
 
 #include <iostream>
-#include "murmurhash2functor.h"
-#include "murmurhash2_stl_specializations.h"
+#include "murmurhash2/functor.h"
+#include "murmurhash2/stl_specializations.h"
 
 int main() {
 	std::cout << mmh2::getMurmurHash2(std::string("")) << std::endl;
