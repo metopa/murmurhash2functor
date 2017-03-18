@@ -6,9 +6,20 @@
 
 #include <iostream>
 #include "murmurhash2functor.h"
+#include "murmurhash2_stl_specializations.h"
 
 int main() {
-	mmh2::MurmurHash2<int> h;
-	std::cout << h(700) << std::endl;
+	std::cout << mmh2::getMurmurHash2(std::string("")) << std::endl;
+	std::cout << mmh2::getMurmurHash2(std::string("AB")) << std::endl;
+	std::cout << mmh2::getMurmurHash2(std::string("BA")) << std::endl;
+	std::cout << mmh2::getMurmurHash2(std::make_pair(0.f, 0.)) << std::endl;
+	std::cout << mmh2::getMurmurHash2(std::make_tuple(0., 0.)) << std::endl;
+	std::cout << mmh2::getMurmurHash2(std::make_tuple(-0., 0.)) << std::endl;
+	std::cout << mmh2::getMurmurHash2(std::make_tuple(0.)) << std::endl;
+	std::cout << mmh2::getMurmurHash2(std::make_tuple(0., 0., 0.)) << std::endl;
+	std::cout << mmh2::getMurmurHash2(std::make_tuple(1., 0.)) << std::endl;
+	std::cout << mmh2::getMurmurHash2(std::make_tuple(0., 1.)) << std::endl;
+	std::cout << mmh2::getMurmurHash2(std::make_tuple(1., 1.)) << std::endl;
+	std::cout << mmh2::getMurmurHash2(std::make_tuple(-1., 1.)) << std::endl;
 	return 0;
 }
