@@ -99,6 +99,15 @@ namespace mmh2 {
 	size_t getMurmurHash2(const T& x, uint64_t seed = 0) {
 		return MurmurHash2<T>()(x, seed);
 	}
+
+
+	template <>
+	struct MurmurHash2<void> {
+		template <typename T>
+		uint64_t operator ()(const T& x, uint64_t seed = 0) const {
+			return getMurmurHash2(x, seed);
+		}
+	};
 }
 
 #endif //MMH2_MURMURHASH2FUNCTOR_H
